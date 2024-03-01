@@ -1,4 +1,5 @@
 import React, { useState, useEffect } from "react";
+import './home.css';
 
 interface Item {
  id: string;
@@ -20,7 +21,7 @@ export default function Home() {
     return (
         <>
             <h1>Boilerplate for building SPAs using MERN stack</h1>
-            <ul>
+            <ul className="items">
             {
                 data.map((item: Item) => {
                     return <li key={item.id}>{item.id} {item.name}</li>
