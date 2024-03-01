@@ -19,7 +19,7 @@ export default function Home() {
 
     return (
         <>
-            <div>Hello, esbuild!</div>
+            <h1>Boilerplate for building SPAs using MERN stack</h1>
             <ul>
             {
                 data.map((item: Item) => {
