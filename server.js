@@ -20,8 +20,9 @@ app.get('/api/json-server', (req, res) => {
 })
 
 app.get('/*', function (req, res) {
-    console.log(req.url);
-    res.sendFile(path.join(process.cwd(), 'public', 'index.html'));
+    const mypath = path.join(process.cwd(), 'public', 'index.html');
+    console.log(req.url, mypath);
+    res.sendFile(mypath);
 });
 
 app.listen(port, () => {

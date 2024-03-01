@@ -1,22 +1,14 @@
-import React from "react";
-import { createRoot } from 'react-dom/client';
-import { BrowserRouter, Routes, Route } from "react-router-dom";
-import Layout from "./pages/layout";
-import Home from "./pages/home";
-import Contact from "./pages/contact";
+import React from 'react';
+import ReactDom from 'react-dom/client';
+import { BrowserRouter } from "react-router-dom";
+import App from './App';
 
-export default function App() {
-    return (
-      <BrowserRouter>
-        <Routes>
-            <Route path="/" element={<Home />} />
-            <Route path="/contact" element={<Contact />} />
-        </Routes>
-      </BrowserRouter>
-    );
-  }
-
-
-const container = document.getElementById('app');
-const root = createRoot(container!);
-root.render(<App />);
+const root = ReactDom.createRoot(document.getElementById('root'));
+console.log('starting...')
+root.render(
+    <React.StrictMode>
+        <BrowserRouter>
+            <App />
+        </BrowserRouter>
+    </React.StrictMode>
+);
