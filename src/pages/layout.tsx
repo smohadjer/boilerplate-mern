@@ -10,9 +10,14 @@ export default function Layout() {
                 <li><NavLink style={
                     ({isActive}) => { return isActive ? { color: "red" } : {} }
                 } to="/">Home</NavLink></li>
-                <li><NavLink to="/contacts">Contacts</NavLink></li>
-                <li><Link to="/contacts/saeid">Contact subpage (nested route)</Link></li>
-                <li><Link to="/contacts/123">Contact with id</Link></li>
+                {/* remove attribute end if you want that item to display with active sytle
+                when any of its children is active */}
+                <li><NavLink end to="/contacts">Contacts</NavLink>
+                    <ul>
+                        <li><NavLink to="/contacts/saeid">Contact subpage (nested route)</NavLink></li>
+                        <li><NavLink to="/contacts/123">Contact with id</NavLink></li>
+                    </ul>
+                </li>
             </ul>
         </nav>
         <Outlet />

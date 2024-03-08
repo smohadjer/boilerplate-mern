@@ -1,4 +1,6 @@
 import React, { useState, useEffect } from "react";
+import { Link } from 'react-router-dom';
+
 import './home.css';
 
 interface Item {
@@ -6,21 +8,33 @@ interface Item {
  name: string;
 }
 
+interface Cache {
+    data?: [];
+}
+
+const cache: Cache = {};
+
 export default function Home() {
     const [data, setData] = useState([]);
 
     useEffect(() => {
-        fetch('/api/json-server')
-        .then(res => res.json())
-        .then(json => {
-            setData(json);
-            console.log(json);
-        });
+        if (cache.data) {
+            setData(cache.data);
+        } else {
+            fetch('/api/json-server')
+            .then(res => res.json())
+            .then(json => {
+                console.log(json);
+                setData(json);
+                cache.data = json;
+            });
+        }
     }, []);
 
     return (
         <>
             <h1>Boilerplate for building SPAs using MERN stack</h1>
+            <p><Link to="/contacts">Link to Contacts</Link></p>
             <ul className="items">
             {
                 data.map((item: Item) => {
